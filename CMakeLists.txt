@@ -33,6 +33,6 @@ target_include_directories(vs1838_control
 )
 target_sources(vs1838_control
     INTERFACE
-        "${CMAKE_CURRENT_SOURCE_DIR}/driver/vs1838_control.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/driver/vs1838_control.c"
+        "${CMAKE_CURRENT_SOURCE_DIR}/device/vs1838_control.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/device/vs1838_control.c"
 )
