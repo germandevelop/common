@@ -13,6 +13,7 @@ typedef enum node_command_id
     SET_LIGHT,
     SET_INTRUSION,
     UPDATE_TEMPERATURE,
+    UPDATE_DOOR_STATE,
     NODE_COMMAND_SIZE
 
 } node_command_id_t;
