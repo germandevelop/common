@@ -21,6 +21,7 @@ target_include_directories(node
 )
 target_sources(node
     INTERFACE
+        "${CMAKE_CURRENT_SOURCE_DIR}/node/node.types.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/node/node.command.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/node/node.list.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/node/node.list.c"
