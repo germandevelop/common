@@ -10,6 +10,7 @@ typedef enum node_command_id
 {
     DO_NOTHING = 0,
     SET_MODE,
+    SET_WARNING,
     SET_LIGHT,
     SET_INTRUSION,
     UPDATE_TEMPERATURE,
@@ -20,11 +21,18 @@ typedef enum node_command_id
 
 typedef enum node_mode_id
 {
-    SILENCE = 0,
-    GUARD,
-    ALARM
+    SILENCE_MODE = 0,
+    GUARD_MODE,
+    ALARM_MODE
 
 } node_mode_id_t;
+
+typedef enum node_warning_id
+{
+    WARNING_OFF = 0,
+    WARNING_ON
+
+} node_warning_id_t;
 
 typedef enum node_light_id
 {
