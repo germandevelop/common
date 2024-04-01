@@ -36,3 +36,15 @@ target_sources(vs1838_control
         "${CMAKE_CURRENT_SOURCE_DIR}/devices/vs1838_control.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/devices/vs1838_control.c"
 )
+
+add_library(bmp280_sensor INTERFACE)
+target_include_directories(bmp280_sensor
+    INTERFACE
+        "${CMAKE_CURRENT_SOURCE_DIR}"
+)
+target_sources(bmp280_sensor
+    INTERFACE
+        "${CMAKE_CURRENT_SOURCE_DIR}/devices/bmp280_sensor.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/devices/bmp280_sensor.c"
+)
+
