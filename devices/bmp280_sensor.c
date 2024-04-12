@@ -28,7 +28,9 @@ static void bmp280_sensor_delay_us (uint32_t period_us, void *user_data);
 
 int bmp280_sensor_init (bmp280_sensor_config_t const * const init_config, std_error_t * const error)
 {
-    assert(init_config != NULL);
+    assert(init_config                      != NULL);
+    assert(init_config->lock_i2c_callback   != NULL);
+    assert(init_config->unlock_i2c_callback != NULL);
     assert(init_config->read_i2c_callback   != NULL);
     assert(init_config->write_i2c_callback  != NULL);
     assert(init_config->delay_callback      != NULL);
@@ -121,14 +123,22 @@ BMP2_INTF_RET_TYPE bmp280_sensor_read_i2c (uint8_t register_address, uint8_t *ar
 {
     std_error_t *error = (std_error_t*)user_data;
 
-    return config.read_i2c_callback(BMP2_I2C_ADDR_PRIM, (uint16_t)register_address, sizeof(register_address), array, (uint16_t)array_size, config.i2c_timeout_ms, error);
+    config.lock_i2c_callback();
+    int exit_code = config.read_i2c_callback(BMP2_I2C_ADDR_PRIM, (uint16_t)register_address, sizeof(register_address), array, (uint16_t)array_size, config.i2c_timeout_ms, error);
+    config.unlock_i2c_callback();
+
+    return exit_code;
 }
 
 BMP2_INTF_RET_TYPE bmp280_sensor_write_i2c (uint8_t register_address, const uint8_t *array, uint32_t array_size, void *user_data)
 {
     std_error_t *error = (std_error_t*)user_data;
 
-    return config.write_i2c_callback(BMP2_I2C_ADDR_PRIM, (uint16_t)register_address, sizeof(register_address), (uint8_t*)array, (uint16_t)array_size, config.i2c_timeout_ms, error);
+    config.lock_i2c_callback();
+    int exit_code = config.write_i2c_callback(BMP2_I2C_ADDR_PRIM, (uint16_t)register_address, sizeof(register_address), (uint8_t*)array, (uint16_t)array_size, config.i2c_timeout_ms, error);
+    config.unlock_i2c_callback();
+
+    return exit_code;
 }
 
 void bmp280_sensor_delay_us (uint32_t period_us, void *user_data)
