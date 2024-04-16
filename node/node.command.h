@@ -9,6 +9,9 @@
 typedef enum node_command_id
 {
     DO_NOTHING = 0,
+	REQUEST_VERSION,
+	RESPONSE_VERSION,
+	UPDATE_FIRMWARE,
     SET_MODE,
     SET_WARNING,
     SET_LIGHT,
