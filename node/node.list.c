@@ -8,20 +8,29 @@
 // Nodes
 const uint8_t node_ip_address[NODE_LIST_SIZE][4] =
 {
-    [NODE_T01] = { 192, 168, 0, 110 },
-    [NODE_B01] = { 192, 168, 0, 111 },
-    [NODE_B02] = { 192, 168, 0, 112 }
+    [NODE_B01] = { 192, 168, 100, 110 },
+    [NODE_B02] = { 192, 168, 100, 111 },
+    [NODE_T01] = { 192, 168, 100, 112 }
 };
 
-// Host
-const uint16_t host_port = 2399;
+// Server
+const uint16_t server_port = 2398;
 
-const uint8_t host_ip_address[4] = 
+const uint8_t server_ip_address[4] = 
 {
-    192, 168, 0, 101
+    192, 168, 100, 111
 };
 
-const uint8_t host_netmask[4] =
+// Admin
+const uint16_t admin_port = 2399;
+
+const uint8_t admin_ip_address[4] = 
 {
-    255, 255, 0, 0
+    192, 168, 100, 101
 };
+
+const uint8_t netmask[4] =
+{
+    255, 255, 255, 0
+};
+
