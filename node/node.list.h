@@ -16,7 +16,7 @@ typedef enum node_id
     NODE_B02,
 	NODE_T01,
     NODE_LIST_SIZE,
-	NODE_BROADCAST = 255,
+	NODE_BROADCAST = 255
 
 } node_id_t;
 
